@@ -1,0 +1,7 @@
+*.pyc
+c11.pdf
+a.out
+output/
+*.o
+*.exe
+*.i
