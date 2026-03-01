@@ -9,5 +9,5 @@
 
 #define PLUS(a, b) ((a) + (b))
 int main(void) {
-    return PLUS(1, 2);
+    return PLUS(1, 2) - 3;
 }

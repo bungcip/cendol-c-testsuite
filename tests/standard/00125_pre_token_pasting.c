@@ -11,5 +11,5 @@
 
 int main(void) {
     int xy = 10;
-    return CONCAT(x, y);
+    return CONCAT(x, y) - 10;
 }

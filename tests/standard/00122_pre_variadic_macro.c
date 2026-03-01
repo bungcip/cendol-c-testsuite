@@ -7,6 +7,7 @@
 // the identifier __VA_ARGS__ shall occur in the replacement list."
 // EXPECT: run_success
 
+int printf(const char *format, ...);
 #define LOG(...) printf(__VA_ARGS__)
 
 int main(void) {

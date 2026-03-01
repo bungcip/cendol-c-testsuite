@@ -53,7 +53,12 @@ class TestEngine:
                 if file.endswith(".c"):
                     test_files.append(os.path.join(root, file))
         
-        test_files.sort()
+        # Sort tests such that those in tests/pp directory come last
+        def sort_key(path):
+            is_pp = 1 if "tests/pp" in path else 0
+            return (is_pp, path)
+
+        test_files.sort(key=sort_key)
         return [TestCase(f) for f in test_files]
 
     def verify_compiler_integrity(self) -> None:
@@ -115,36 +120,54 @@ class TestEngine:
             return self._run_positive_test(test, result)
         elif test.category == "negative":
             return self._run_negative_test(test, result)
-        else:
-            result["message"] = f"Unknown category: {test.category}"
-            return result
+        
+        result["message"] = f"Unknown test category: {test.category}"
+        return result
 
     def _run_preprocessor_test(self, test: TestCase, result: Dict) -> Dict:
         out_file = self._get_output_path(test.file_path, ".i")
-        comp_res = self.compiler.preprocess(test.file_path, out_file)
         
+        # Determine if this is a "pure" preprocessor test based on its location
+        is_pure = "tests/pp" in test.file_path
+        
+        comp_res = self.compiler.preprocess(test.file_path, out_file, pure=is_pure)
+
         if not comp_res.success:
             result["message"] = f"Preprocessing failed (code {comp_res.returncode}):\n{comp_res.stderr}\n{comp_res.stdout}".strip()
             return result
 
-        # For preprocessor tests, we look for a .expected file
         expected_file = test.file_path + ".expected"
         if os.path.exists(expected_file):
             with open(out_file, 'r') as f:
                 actual = f.read()
             with open(expected_file, 'r') as f:
                 expected = f.read()
-            
-            if expected.strip() in actual.strip():
-                result["passed"] = True
+
+            if is_pure:
+                # Normalize tokens: split by whitespace and join with single space
+                import re
+                def normalize(text):
+                    # Split by whitespace and punctuation, but keep punctuation as tokens
+                    tokens = re.findall(r"[\w']+|[^\w\s]", text)
+                    return " ".join(tokens)
+                
+                if normalize(expected) == normalize(actual):
+                    result["passed"] = True
+                else:
+                    result["message"] = f"Preprocessor output does not match expectation.\nExpected: {normalize(expected)}\nActual:   {normalize(actual)}"
+                    if os.path.exists(out_file): os.remove(out_file)
+                    return result
             else:
-                result["message"] = "Preprocessor output does not match expectation"
-                if os.path.exists(out_file): os.remove(out_file)
-                return result
+                # Standard substring match for old preprocessor tests
+                if expected.strip() in actual.strip():
+                    result["passed"] = True
+                else:
+                    result["message"] = "Preprocessor output does not match expectation"
+                    if os.path.exists(out_file): os.remove(out_file)
+                    return result
         else:
-            # If no .expected, just successful preprocessing is enough (minimal test)
             result["passed"] = True
-        
+
         if os.path.exists(out_file): os.remove(out_file)
 
         # If the test also expects to be runnable, run it as a positive test

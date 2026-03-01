@@ -20,7 +20,7 @@ class CompilerAdapter(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def preprocess(self, source_file: str, output_file: str) -> CompilationResult:
+    def preprocess(self, source_file: str, output_file: str, pure: bool = False) -> CompilationResult:
         """Runs the preprocessor only."""
         pass
 
@@ -60,8 +60,11 @@ class GccLikeAdapter(CompilerAdapter):
     def get_name(self) -> str:
         return self.name
 
-    def preprocess(self, source_file: str, output_file: str) -> CompilationResult:
-        cmd = [self.path, "-E"] + self.extra_args + [source_file, "-o", output_file]
+    def preprocess(self, source_file: str, output_file: str, pure: bool = False) -> CompilationResult:
+        cmd = [self.path, "-E"]
+        if pure:
+            cmd.append("-P")
+        cmd += self.extra_args + [source_file, "-o", output_file]
         result = subprocess.run(cmd, capture_output=True, text=True)
         return CompilationResult(
             success=(result.returncode == 0),
