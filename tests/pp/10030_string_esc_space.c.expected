@@ -1,0 +1,3 @@
+char * s1 = "a b" ;
+char * s2 = "\"quote\"" ;
+char * s3 = "a \n b" ;

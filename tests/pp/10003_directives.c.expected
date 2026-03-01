@@ -1,0 +1,2 @@
+int x = 100 ;
+char * f = "new_file.c" ;

@@ -1,4 +1,4 @@
-// TEST: 10003_nested_expansion
+// TEST: 10018_nested_expansion
 // CATEGORY: preprocessor
 // STANDARD: C11
 

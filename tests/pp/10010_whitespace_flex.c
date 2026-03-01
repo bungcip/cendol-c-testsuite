@@ -1,4 +1,4 @@
-// TEST: 10002_whitespace_flex
+// TEST: 10010_whitespace_flex
 // CATEGORY: preprocessor
 // STANDARD: C11
 

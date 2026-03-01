@@ -133,7 +133,15 @@ class TestEngine:
         comp_res = self.compiler.preprocess(test.file_path, out_file, pure=is_pure)
 
         if not comp_res.success:
+            if test.expect == "fail":
+                result["passed"] = True
+                return result
             result["message"] = f"Preprocessing failed (code {comp_res.returncode}):\n{comp_res.stderr}\n{comp_res.stdout}".strip()
+            return result
+        
+        if test.expect == "fail":
+            result["message"] = "Expected preprocessing failure, but it succeeded."
+            if os.path.exists(out_file): os.remove(out_file)
             return result
 
         expected_file = test.file_path + ".expected"

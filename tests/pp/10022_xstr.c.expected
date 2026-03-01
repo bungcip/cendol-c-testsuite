@@ -1,0 +1,2 @@
+char * s1 = "VALUE" ;
+char * s2 = "42" ;

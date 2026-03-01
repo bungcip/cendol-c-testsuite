@@ -1,0 +1,3 @@
+int f = 10;
+int y = f;
+int z = 20 + 1;

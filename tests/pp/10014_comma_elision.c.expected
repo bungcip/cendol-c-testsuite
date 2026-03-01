@@ -1,0 +1,4 @@
+void foo() {
+    printf ( "hi" , 0 ) ;
+    printf ( "val: %d" , 10 ) ;
+}

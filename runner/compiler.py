@@ -20,7 +20,7 @@ class CompilerAdapter(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def preprocess(self, source_file: str, output_file: str, pure: bool = False) -> CompilationResult:
+    def preprocess(self, source_file: str, output_file: str, pure: bool = False, timeout: int = 10) -> CompilationResult:
         """Runs the preprocessor only."""
         pass
 
@@ -28,6 +28,21 @@ class CompilerAdapter(abc.ABC):
     def compile(self, source_file: str, output_file: str, is_executable: bool = True) -> CompilationResult:
         """Compiles the source file."""
         pass
+
+    def _run_command(self, cmd: List[str], timeout: int = 10) -> CompilationResult:
+        """Runs a command with a timeout."""
+        try:
+            result = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
+            return CompilationResult(
+                success=(result.returncode == 0),
+                returncode=result.returncode,
+                stdout=result.stdout,
+                stderr=result.stderr
+            )
+        except subprocess.TimeoutExpired:
+            return CompilationResult(success=False, returncode=-1, stdout="", stderr="Timeout expired")
+        except Exception as e:
+            return CompilationResult(success=False, returncode=-1, stdout="", stderr=str(e))
 
     def run(self, executable: str) -> CompilationResult:
         """Runs the compiled executable."""
@@ -60,29 +75,20 @@ class GccLikeAdapter(CompilerAdapter):
     def get_name(self) -> str:
         return self.name
 
-    def preprocess(self, source_file: str, output_file: str, pure: bool = False) -> CompilationResult:
+    def preprocess(self, source_file: str, output_file: str, pure: bool = False, timeout: int = 10) -> CompilationResult:
         cmd = [self.path, "-E"]
         if pure:
             cmd.append("-P")
+            cmd.append("-I.")
         cmd += self.extra_args + [source_file, "-o", output_file]
-        result = subprocess.run(cmd, capture_output=True, text=True)
-        return CompilationResult(
-            success=(result.returncode == 0),
-            returncode=result.returncode,
-            stdout=result.stdout,
-            stderr=result.stderr
-        )
+        return self._run_command(cmd, timeout)
 
-    def compile(self, source_file: str, output_file: str, is_executable: bool = True) -> CompilationResult:
+    def compile(self, source_file: str, output_file: str, is_executable: bool = True, timeout: int = 10) -> CompilationResult:
         cmd = [self.path] + self.extra_args + [source_file, "-o", output_file]
         if not is_executable:
             cmd.append("-c")
         
-        result = subprocess.run(cmd, capture_output=True, text=True)
-        return CompilationResult(
-            success=(result.returncode == 0),
-            returncode=result.returncode,
-            stdout=result.stdout,
-            stderr=result.stderr,
-            executable=output_file if is_executable and result.returncode == 0 and os.path.exists(output_file) else None
-        )
+        result = self._run_command(cmd, timeout)
+        if is_executable and result.success and os.path.exists(output_file):
+            result.executable = output_file
+        return result
