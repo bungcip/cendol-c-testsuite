@@ -135,20 +135,26 @@ class TestEngine:
             with open(expected_file, 'r') as f:
                 expected = f.read()
             
-            # Simple substring check for demonstration; 
-            # real preprocessor comparison might need to normalize whitespace/line numbers
             if expected.strip() in actual.strip():
                 result["passed"] = True
             else:
                 result["message"] = "Preprocessor output does not match expectation"
+                if os.path.exists(out_file): os.remove(out_file)
+                return result
         else:
             # If no .expected, just successful preprocessing is enough (minimal test)
             result["passed"] = True
         
         if os.path.exists(out_file): os.remove(out_file)
+
+        # If the test also expects to be runnable, run it as a positive test
+        if test.expect == "run_success":
+            return self._run_positive_test(test, result)
+
         return result
 
     def _run_positive_test(self, test: TestCase, result: Dict) -> Dict:
+        result["passed"] = False # Reset passed status for positive test phase
         exe_file = self._get_output_path(test.file_path, ".exe")
         comp_res = self.compiler.compile(test.file_path, exe_file, is_executable=True)
         
