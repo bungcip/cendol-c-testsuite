@@ -1,0 +1,17 @@
+// TEST: 00056_pos_flexible_array_static_init
+// CATEGORY: positive
+// STANDARD: C11
+// REFERENCE: ISO C11 §6.7.2.1p18
+// STANDARD_TEXT:
+// "Initialization of a structure with a flexible array member... 
+// is implementation-defined." (Check if it compiles)
+// EXPECT: run_success
+
+struct s { int n; int a[]; };
+
+int main(void) {
+    struct s obj;
+    obj.n = 10;
+    if (obj.n != 10) return 1;
+    return 0;
+}
