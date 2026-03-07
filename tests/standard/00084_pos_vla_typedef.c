@@ -8,13 +8,13 @@
 // evaluated each time the declaration is executed."
 // EXPECT: run_success
 
-void f(int n) {
+int f(int n) {
     typedef int vla_type[n];
     vla_type a;
     a[0] = 42;
+    return a[0];
 }
 
 int main(void) {
-    f(10);
-    return 0;
+    return f(10) == 42 ? 0 : 1;
 }

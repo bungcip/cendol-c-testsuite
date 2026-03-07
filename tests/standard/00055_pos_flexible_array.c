@@ -14,5 +14,6 @@ struct s {
 };
 
 int main(void) {
+    if (sizeof(struct s) < sizeof(int)) return 1;
     return 0;
 }

@@ -10,5 +10,6 @@
 int main(void) {
     volatile int x = 10;
     x = 20;
+    if (x != 20) return 1;
     return 0;
 }

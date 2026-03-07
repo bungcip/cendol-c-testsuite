@@ -11,5 +11,7 @@ struct s { int n; int a[]; };
 
 int main(void) {
     struct s obj;
+    obj.n = 10;
+    if (obj.n != 10) return 1;
     return 0;
 }

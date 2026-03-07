@@ -16,7 +16,9 @@ struct outer {
 int main(void) {
     struct outer o;
     o.i.x = 42;
+    if (o.i.x != 42) return 1;
     struct inner in; // struct inner is also available in the scope
     in.x = 10;
+    if (in.x != 10) return 2;
     return 0;
 }

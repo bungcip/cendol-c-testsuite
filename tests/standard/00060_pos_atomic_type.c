@@ -11,5 +11,6 @@
 int main(void) {
     _Atomic int a = 10;
     atomic_init(&a, 20);
+    if (atomic_load(&a) != 20) return 1;
     return 0;
 }

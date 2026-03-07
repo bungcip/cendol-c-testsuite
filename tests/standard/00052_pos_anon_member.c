@@ -18,5 +18,8 @@ struct t {
 int main(void) {
     struct t obj;
     obj.y = 10; // Direct access to anonymous union member
+    if (obj.y != 10) return 1;
+    obj.z = 1.0f;
+    if (obj.z != 1.0f) return 2;
     return 0;
 }

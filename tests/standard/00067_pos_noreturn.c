@@ -14,5 +14,6 @@ noreturn void my_exit(int status) {
 }
 
 int main(void) {
-    return 0;
+    my_exit(0);
+    return 1; // Should not reach here
 }

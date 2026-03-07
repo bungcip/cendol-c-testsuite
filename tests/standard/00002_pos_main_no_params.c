@@ -8,5 +8,7 @@
 // EXPECT: run_success
 
 int main(void) {
-    return 0;
+    int x = 40;
+    int y = 2;
+    return (x + y) == 42 ? 0 : 1;
 }

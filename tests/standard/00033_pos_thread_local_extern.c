@@ -11,5 +11,7 @@ _Thread_local int x;
 extern _Thread_local int x;
 
 int main(void) {
+    x = 42;
+    if (x != 42) return 1;
     return 0;
 }

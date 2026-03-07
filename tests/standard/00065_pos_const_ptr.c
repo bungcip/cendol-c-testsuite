@@ -8,9 +8,18 @@
 // EXPECT: run_success
 
 int main(void) {
-    int x = 0;
+    int x = 42;
     const int *p1 = &x;       // pointer to const int
     int *const p2 = &x;       // const pointer to int
     const int *const p3 = &x; // const pointer to const int
+    
+    if (*p1 != 42) return 1;
+    if (*p2 != 42) return 2;
+    if (*p3 != 42) return 3;
+    
+    *p2 = 10;
+    if (x != 10) return 4;
+    if (*p1 != 10) return 5;
+    
     return 0;
 }

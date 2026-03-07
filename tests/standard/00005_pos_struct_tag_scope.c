@@ -12,5 +12,7 @@ int main(void) {
     struct s { float y; }; // Shadows outer struct tag
     struct s obj;
     obj.y = 1.0f;
+    if (obj.y != 1.0f) return 1;
+    if (sizeof(obj) != sizeof(float)) return 2;
     return 0;
 }

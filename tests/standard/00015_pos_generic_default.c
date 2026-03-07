@@ -6,11 +6,14 @@
 // "A generic selection shall have at most one default generic association."
 // EXPECT: run_success
 
+#include <string.h>
+
 int main(void) {
     double d = 1.0;
     const char *s = _Generic(d,
         int: "int",
         default: "other"
     );
+    if (strcmp(s, "other") != 0) return 1;
     return 0;
 }

@@ -12,5 +12,6 @@
 _Thread_local int thread_var = 42;
 
 int main(void) {
+    if (thread_var != 42) return 1;
     return 0;
 }

@@ -7,6 +7,8 @@
 // assignment-expression , generic-assoc-list )"
 // EXPECT: run_success
 
+#include <string.h>
+
 #define get_type(x) _Generic((x), \
     int: "int", \
     float: "float", \
@@ -16,7 +18,8 @@
 int main(void) {
     int i = 0;
     float f = 0.0;
-    const char *si = get_type(i);
-    const char *sf = get_type(f);
+    if (strcmp(get_type(i), "int") != 0) return 1;
+    if (strcmp(get_type(f), "float") != 0) return 2;
+    if (strcmp(get_type(1.0), "other") != 0) return 3;
     return 0;
 }

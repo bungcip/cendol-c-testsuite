@@ -14,5 +14,6 @@ struct s {
 };
 
 int main(void) {
+    if (alignof(struct s) < alignof(double)) return 1;
     return 0;
 }

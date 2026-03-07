@@ -15,6 +15,6 @@ struct s {
 };
 
 int main(void) {
-    size_t a = alignof(struct s);
+    if (alignof(struct s) < 16) return 1;
     return 0;
 }
