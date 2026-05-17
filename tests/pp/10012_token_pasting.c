@@ -1,4 +1,4 @@
-// TEST: 10012_token_pasting
+// TEST: token_pasting
 // CATEGORY: preprocessor
 // STANDARD: C11
 

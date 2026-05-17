@@ -1,4 +1,4 @@
-// TEST: 10009_nested_if
+// TEST: nested_if
 // CATEGORY: preprocessor
 // STANDARD: C11
 

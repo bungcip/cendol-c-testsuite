@@ -1,4 +1,4 @@
-// TEST: 00007_pos_extern_shadow
+// TEST: pos_extern_shadow
 // CATEGORY: positive
 // STANDARD: C11
 // REFERENCE: ISO C11 §6.2.2p4

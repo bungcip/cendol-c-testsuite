@@ -1,4 +1,4 @@
-// TEST: 00023_neg_generic_no_match
+// TEST: neg_generic_no_match
 // CATEGORY: negative
 // STANDARD: C11
 // REFERENCE: ISO C11 §6.5.1.1p2

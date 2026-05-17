@@ -1,4 +1,4 @@
-// TEST: 10035_hash_hash_stringification
+// TEST: hash_hash_stringification
 // CATEGORY: preprocessor
 // STANDARD: C11
 

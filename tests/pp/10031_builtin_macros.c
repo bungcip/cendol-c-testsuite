@@ -1,4 +1,4 @@
-// TEST: 10031_builtin_macros
+// TEST: builtin_macros
 // CATEGORY: preprocessor
 // STANDARD: C11
 

@@ -1,4 +1,4 @@
-// TEST: 00004_pos_enum_scope
+// TEST: pos_enum_scope
 // CATEGORY: positive
 // STANDARD: C11
 // REFERENCE: ISO C11 §6.2.1p4

@@ -1,4 +1,4 @@
-// TEST: 00014_pos_usual_arith_conv
+// TEST: pos_usual_arith_conv
 // CATEGORY: positive
 // STANDARD: C11
 // REFERENCE: ISO C11 §6.3.1.8

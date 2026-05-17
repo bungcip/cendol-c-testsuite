@@ -1,4 +1,4 @@
-// TEST: 10036_directive_in_macro_args
+// TEST: directive_in_macro_args
 // CATEGORY: preprocessor
 // STANDARD: C11
 

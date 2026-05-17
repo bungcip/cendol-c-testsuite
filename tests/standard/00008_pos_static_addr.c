@@ -1,4 +1,4 @@
-// TEST: 00008_pos_static_addr
+// TEST: pos_static_addr
 // CATEGORY: positive
 // STANDARD: C11
 // REFERENCE: ISO C11 §6.2.4p3

@@ -1,4 +1,4 @@
-// TEST: 10006_ifdef_ifndef
+// TEST: ifdef_ifndef
 // CATEGORY: preprocessor
 // STANDARD: C11
 

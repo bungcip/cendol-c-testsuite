@@ -1,4 +1,4 @@
-// TEST: 10024_recursive_expansion
+// TEST: recursive_expansion
 // CATEGORY: preprocessor
 // STANDARD: C11
 

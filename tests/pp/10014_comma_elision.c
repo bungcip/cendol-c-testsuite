@@ -1,4 +1,4 @@
-// TEST: 10014_comma_elision
+// TEST: comma_elision
 // CATEGORY: preprocessor
 // STANDARD: C11
 

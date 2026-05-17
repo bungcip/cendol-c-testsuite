@@ -1,4 +1,4 @@
-// TEST: 10033_defer_expansion
+// TEST: defer_expansion
 // CATEGORY: preprocessor
 // STANDARD: C11
 

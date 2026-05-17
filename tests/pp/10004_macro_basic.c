@@ -1,4 +1,4 @@
-// TEST: 10004_macro_basic
+// TEST: macro_basic
 // CATEGORY: preprocessor
 // STANDARD: C11
 

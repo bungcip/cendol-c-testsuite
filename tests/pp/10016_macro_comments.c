@@ -1,4 +1,4 @@
-// TEST: 10016_macro_comments
+// TEST: macro_comments
 // CATEGORY: preprocessor
 // STANDARD: C11
 

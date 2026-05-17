@@ -1,4 +1,4 @@
-// TEST: 10015_line_splicing
+// TEST: line_splicing
 // CATEGORY: preprocessor
 // STANDARD: C11
 

@@ -1,4 +1,4 @@
-// TEST: 10013_variadic
+// TEST: variadic
 // CATEGORY: preprocessor
 // STANDARD: C11
 

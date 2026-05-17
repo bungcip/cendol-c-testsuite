@@ -1,4 +1,4 @@
-// TEST: 10005_if_else_endif
+// TEST: if_else_endif
 // CATEGORY: preprocessor
 // STANDARD: C11
 

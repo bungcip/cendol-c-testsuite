@@ -1,4 +1,4 @@
-// TEST: 00005_pos_struct_tag_scope
+// TEST: pos_struct_tag_scope
 // CATEGORY: positive
 // STANDARD: C11
 // REFERENCE: ISO C11 §6.2.1p4

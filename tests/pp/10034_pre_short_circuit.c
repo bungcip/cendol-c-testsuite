@@ -1,4 +1,4 @@
-// TEST: 10034_pre_short_circuit
+// TEST: pre_short_circuit
 // CATEGORY: preprocessor
 // STANDARD: C11
 

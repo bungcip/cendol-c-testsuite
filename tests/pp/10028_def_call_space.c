@@ -1,4 +1,4 @@
-// TEST: 10028_def_call_space
+// TEST: def_call_space
 // CATEGORY: preprocessor
 // STANDARD: C11
 

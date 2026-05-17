@@ -1,4 +1,4 @@
-// TEST: 00013_pos_bool_conversion
+// TEST: pos_bool_conversion
 // CATEGORY: positive
 // STANDARD: C11
 // REFERENCE: ISO C11 §6.3.1.2

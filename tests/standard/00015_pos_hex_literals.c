@@ -1,4 +1,4 @@
-// TEST: 00015_pos_hex_literals
+// TEST: pos_hex_literals
 // CATEGORY: positive
 // STANDARD: C11
 // REFERENCE: ISO C11 §6.4.4.1

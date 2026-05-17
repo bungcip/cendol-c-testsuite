@@ -1,4 +1,4 @@
-// TEST: 00017_pos_generic_decay
+// TEST: pos_generic_decay
 // CATEGORY: positive
 // STANDARD: C11
 // REFERENCE: ISO C11 §6.5.1.1

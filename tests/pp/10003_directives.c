@@ -1,4 +1,4 @@
-// TEST: 10003_directives
+// TEST: directives
 // CATEGORY: preprocessor
 // STANDARD: C11
 

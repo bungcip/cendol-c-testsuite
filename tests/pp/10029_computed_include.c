@@ -1,4 +1,4 @@
-// TEST: 10029_computed_include
+// TEST: computed_include
 // CATEGORY: preprocessor
 // STANDARD: C11
 

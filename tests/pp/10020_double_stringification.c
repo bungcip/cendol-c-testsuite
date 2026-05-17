@@ -1,4 +1,4 @@
-// TEST: 10020_double_stringification
+// TEST: double_stringification
 // CATEGORY: preprocessor
 // STANDARD: C11
 

@@ -1,4 +1,4 @@
-// TEST: 10019_token_paste_rescan
+// TEST: token_paste_rescan
 // CATEGORY: preprocessor
 // STANDARD: C11
 

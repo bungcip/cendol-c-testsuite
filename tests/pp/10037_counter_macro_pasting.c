@@ -1,4 +1,4 @@
-// TEST: 10037_counter_macro_pasting
+// TEST: counter_macro_pasting
 // CATEGORY: preprocessor
 // STANDARD: C11
 

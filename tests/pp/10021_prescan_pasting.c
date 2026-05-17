@@ -1,4 +1,4 @@
-// TEST: 10021_prescan_pasting
+// TEST: prescan_pasting
 // CATEGORY: preprocessor
 // STANDARD: C11
 

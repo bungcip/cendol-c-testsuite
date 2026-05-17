@@ -1,4 +1,4 @@
-// TEST: 00009_pos_complex_arith
+// TEST: pos_complex_arith
 // CATEGORY: positive
 // STANDARD: C11
 // REFERENCE: ISO C11 §6.2.5p11

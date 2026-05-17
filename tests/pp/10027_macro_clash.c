@@ -1,4 +1,4 @@
-// TEST: 10027_macro_clash
+// TEST: macro_clash
 // CATEGORY: preprocessor
 // STANDARD: C11
 

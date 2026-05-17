@@ -1,4 +1,4 @@
-// TEST: 10008_defined_operator
+// TEST: defined_operator
 // CATEGORY: preprocessor
 // STANDARD: C11
 

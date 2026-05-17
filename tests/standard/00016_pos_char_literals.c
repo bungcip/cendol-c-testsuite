@@ -1,4 +1,4 @@
-// TEST: 00016_pos_char_literals
+// TEST: pos_char_literals
 // CATEGORY: positive
 // STANDARD: C11
 // REFERENCE: ISO C11 §6.4.4.4

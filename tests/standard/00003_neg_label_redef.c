@@ -1,4 +1,4 @@
-// TEST: 00003_neg_label_redef
+// TEST: neg_label_redef
 // CATEGORY: negative
 // STANDARD: C11
 // REFERENCE: ISO C11 §6.2.1

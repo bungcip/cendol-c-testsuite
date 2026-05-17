@@ -1,4 +1,4 @@
-// TEST: 10025_indirect_recursion
+// TEST: indirect_recursion
 // CATEGORY: preprocessor
 // STANDARD: C11
 

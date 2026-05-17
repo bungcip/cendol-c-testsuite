@@ -1,4 +1,4 @@
-// TEST: 10017_empty_args
+// TEST: empty_args
 // CATEGORY: preprocessor
 // STANDARD: C11
 

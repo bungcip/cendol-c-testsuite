@@ -1,4 +1,4 @@
-// TEST: 10001_missing_header
+// TEST: missing_header
 // CATEGORY: preprocessor
 // EXPECT: fail
 // STANDARD: C11

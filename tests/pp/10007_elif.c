@@ -1,4 +1,4 @@
-// TEST: 10007_elif
+// TEST: elif
 // CATEGORY: preprocessor
 // STANDARD: C11
 

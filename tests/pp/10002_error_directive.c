@@ -1,4 +1,4 @@
-// TEST: 10002_error_directive
+// TEST: error_directive
 // CATEGORY: preprocessor
 // EXPECT: fail
 // STANDARD: C11

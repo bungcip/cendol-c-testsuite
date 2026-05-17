@@ -1,4 +1,4 @@
-// TEST: 00010_pos_composite_type_func
+// TEST: pos_composite_type_func
 // CATEGORY: positive
 // STANDARD: C11
 // REFERENCE: ISO C11 §6.2.7p3

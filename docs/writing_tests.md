@@ -12,7 +12,7 @@ Example: `00019_pos_alignof_basic.c`
 
 ## Metadata Header
 ```c
-// TEST: 00019_pos_alignof_basic
+// TEST: pos_alignof_basic
 // CATEGORY: preprocessor | positive | negative
 // STANDARD: C11 (or C17, C23)
 // REFERENCE: ISO C11 §6.x.y.z
@@ -28,7 +28,7 @@ Example: `00019_pos_alignof_basic.c`
 
 ## Example (Negative Test)
 ```c
-// TEST: 00021_neg_void_ptr_arith
+// TEST: neg_void_ptr_arith
 // CATEGORY: negative
 // STANDARD: C11
 // REFERENCE: ISO C11 §6.5.6p2

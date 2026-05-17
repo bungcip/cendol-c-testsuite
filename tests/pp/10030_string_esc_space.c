@@ -1,4 +1,4 @@
-// TEST: 10030_string_esc_space
+// TEST: string_esc_space
 // CATEGORY: preprocessor
 // STANDARD: C11
 

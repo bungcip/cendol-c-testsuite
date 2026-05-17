@@ -1,4 +1,4 @@
-// TEST: 10022_xstr
+// TEST: xstr
 // CATEGORY: preprocessor
 // STANDARD: C11
 

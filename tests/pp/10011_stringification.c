@@ -1,4 +1,4 @@
-// TEST: 10011_stringification
+// TEST: stringification
 // CATEGORY: preprocessor
 // STANDARD: C11
 

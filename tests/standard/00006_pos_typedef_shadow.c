@@ -1,4 +1,4 @@
-// TEST: 00006_pos_typedef_shadow
+// TEST: pos_typedef_shadow
 // CATEGORY: positive
 // STANDARD: C11
 // REFERENCE: ISO C11 §6.2.1p4

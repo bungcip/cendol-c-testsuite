@@ -1,4 +1,4 @@
-// TEST: 10032_unterminated_macro
+// TEST: unterminated_macro
 // CATEGORY: preprocessor
 // EXPECT: fail
 // STANDARD: C11

@@ -1,4 +1,4 @@
-// TEST: 10023_combined_ops
+// TEST: combined_ops
 // CATEGORY: preprocessor
 // STANDARD: C11
 

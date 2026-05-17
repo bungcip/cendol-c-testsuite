@@ -29,6 +29,18 @@ The primary goal of this project is to simplify the process for C compiler devel
 - `docs/`: Guides for extending the suite and writing new tests.
 - `output/`: Temporary directory for intermediate compilation artifacts (automatically ignored).
 
+## 📝 Test Case Format
+
+Every test case in the `tests/` directory contains a standardized metadata header at the very beginning specifying the test name, category, standard, reference paragraph, and expected result
+
+```c
+// TEST: pos_tag_scope_shadowing
+// CATEGORY: positive
+// STANDARD: C11
+// REFERENCE: ISO C11 §6.7.2.3p3
+// EXPECT: run_success
+```
+
 ## 🚀 Quick Start
 
 To run the suite with GCC:

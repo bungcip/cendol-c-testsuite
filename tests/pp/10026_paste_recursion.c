@@ -1,4 +1,4 @@
-// TEST: 10026_paste_recursion
+// TEST: paste_recursion
 // CATEGORY: preprocessor
 // STANDARD: C11
 
