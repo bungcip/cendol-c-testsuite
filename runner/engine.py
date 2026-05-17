@@ -130,7 +130,7 @@ class TestEngine:
         # Determine if this is a "pure" preprocessor test based on its location
         is_pure = "tests/pp" in test.file_path
         
-        comp_res = self.compiler.preprocess(test.file_path, out_file, pure=is_pure)
+        comp_res = self.compiler.preprocess(test.file_path, out_file, pure=is_pure, standard=test.standard)
 
         if not comp_res.success:
             if test.expect == "fail":
@@ -187,7 +187,7 @@ class TestEngine:
     def _run_positive_test(self, test: TestCase, result: Dict) -> Dict:
         result["passed"] = False # Reset passed status for positive test phase
         exe_file = self._get_output_path(test.file_path, ".exe")
-        comp_res = self.compiler.compile(test.file_path, exe_file, is_executable=True)
+        comp_res = self.compiler.compile(test.file_path, exe_file, is_executable=True, standard=test.standard)
         
         if not comp_res.success:
             result["message"] = f"Compilation failed (code {comp_res.returncode}):\n{comp_res.stderr}\n{comp_res.stdout}".strip()
@@ -212,7 +212,7 @@ class TestEngine:
     def _run_negative_test(self, test: TestCase, result: Dict) -> Dict:
         # Negative tests should NOT become executables usually, but we check compilation failure
         obj_file = self._get_output_path(test.file_path, ".o")
-        comp_res = self.compiler.compile(test.file_path, obj_file, is_executable=False)
+        comp_res = self.compiler.compile(test.file_path, obj_file, is_executable=False, standard=test.standard)
         
         if comp_res.success:
             result["message"] = f"Expected compilation error, but it succeeded.\nOutput:\n{comp_res.stderr}\n{comp_res.stdout}".strip()

@@ -20,12 +20,12 @@ class CompilerAdapter(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def preprocess(self, source_file: str, output_file: str, pure: bool = False, timeout: int = 10) -> CompilationResult:
+    def preprocess(self, source_file: str, output_file: str, pure: bool = False, standard: Optional[str] = None, timeout: int = 10) -> CompilationResult:
         """Runs the preprocessor only."""
         pass
 
     @abc.abstractmethod
-    def compile(self, source_file: str, output_file: str, is_executable: bool = True) -> CompilationResult:
+    def compile(self, source_file: str, output_file: str, is_executable: bool = True, standard: Optional[str] = None, timeout: int = 10) -> CompilationResult:
         """Compiles the source file."""
         pass
 
@@ -75,16 +75,30 @@ class GccLikeAdapter(CompilerAdapter):
     def get_name(self) -> str:
         return self.name
 
-    def preprocess(self, source_file: str, output_file: str, pure: bool = False, timeout: int = 10) -> CompilationResult:
+    def _get_std_flag(self, standard: Optional[str]) -> List[str]:
+        std = (standard or "c11").lower()
+        if self.name == "cendol":
+            return ["--std", std]
+        else:
+            # GCC/Clang
+            if std == "c23":
+                # Use c2x as it is more widely supported across GCC 13/14 and Clang versions
+                return ["-std=c2x"] 
+            return [f"-std={std}"]
+
+    def preprocess(self, source_file: str, output_file: str, pure: bool = False, standard: Optional[str] = None, timeout: int = 10) -> CompilationResult:
         cmd = [self.path, "-E"]
         if pure:
             cmd.append("-P")
             cmd.append("-I.")
-        cmd += self.extra_args + [source_file, "-o", output_file]
+        
+        std_flag = self._get_std_flag(standard)
+        cmd += self.extra_args + std_flag + [source_file, "-o", output_file]
         return self._run_command(cmd, timeout)
 
-    def compile(self, source_file: str, output_file: str, is_executable: bool = True, timeout: int = 10) -> CompilationResult:
-        cmd = [self.path] + self.extra_args + [source_file, "-o", output_file]
+    def compile(self, source_file: str, output_file: str, is_executable: bool = True, standard: Optional[str] = None, timeout: int = 10) -> CompilationResult:
+        std_flag = self._get_std_flag(standard)
+        cmd = [self.path] + self.extra_args + std_flag + [source_file, "-o", output_file]
         if not is_executable:
             cmd.append("-c")
         

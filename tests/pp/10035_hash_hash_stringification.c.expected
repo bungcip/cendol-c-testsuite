@@ -1,0 +1,2 @@
+const char *s = "left ## right";
+const char *s2 = "foo ## bar";

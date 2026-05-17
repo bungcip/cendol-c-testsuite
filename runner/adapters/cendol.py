@@ -5,5 +5,5 @@ class CendolAdapter(GccLikeAdapter):
         super().__init__(
             name="cendol",
             path="~/cendol/target/debug/cendol",
-            extra_args=["--std", "c11", "-I", "~/cendol/custom-include", "--pedantic-errors"]
+            extra_args=["-I", "~/cendol/custom-include", "--pedantic-errors"]
         )
